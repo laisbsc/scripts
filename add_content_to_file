@@ -1,0 +1,12 @@
+# Script that uses path library to add link with raw code for HumbleData solutions
+
+from pathlib import Path
+
+files = sorted(Path('.').glob('*.py'))
+files = list(files)
+
+for file in files:
+    content = file.read_text() #open file contents
+    new_line = f"print('\n\nSolucion (código crudo): https://raw.githubusercontent.com/HumbleData/online_workshop_spanish/main/conteudo/solutions/{file}"
+    content = content + new_line # add new line to file's content
+    content = file.write_text(content) #commit file with new contents
